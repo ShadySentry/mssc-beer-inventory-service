@@ -1,24 +1,28 @@
 package guru.sfg.beer.inventory.service.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Configuration
 public class JmsConfig {
 
-    public static final String BEER_SERVICE_QUEUE="beer-service";
-    public static final String BEER_ORDER_SERVICE_QUEUE="beer-order-service";
-    public static final String BEER_INVENTORY_SERVICE_QUEUE="beer-inventory-service";
+    public static final String NEW_INVENTORY_QUEUE = "new-inventory-queue";
 
     @Bean
-    public MessageConverter messageConverter(){
+    public MessageConverter messageConverter(ObjectMapper objectMapper){
         MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
         converter.setTargetType(MessageType.TEXT);
         converter.setTypeIdPropertyName("_type");
+        converter.setObjectMapper(objectMapper);
 
         return converter;
     }
+
 }
