@@ -40,7 +40,6 @@ public class AllocationServiceImpl implements AllocationService {
         return totalOrdered.get() == totalAllocated.get();
     }
 
-
     private void allocateBeerOrderLine(BeerOrderLineDto beerOrderLine) {
         List<BeerInventory> beerInventoryList = beerInventoryRepository.findAllByUpc(beerOrderLine.getUpc());
 
@@ -65,7 +64,6 @@ public class AllocationServiceImpl implements AllocationService {
         });
 
     }
-
 
     @Override
     public void deallocateOrder(BeerOrderDto beerOrderDto) {
