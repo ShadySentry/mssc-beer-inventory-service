@@ -14,6 +14,7 @@ import java.util.Map;
 public class JmsConfig {
 
     public static final String NEW_INVENTORY_QUEUE = "new-inventory-queue";
+    public static final String DEALLOCATE_ORDER_QUEUE = "deallocate-order";
 
     @Bean
     public MessageConverter messageConverter(ObjectMapper objectMapper){
